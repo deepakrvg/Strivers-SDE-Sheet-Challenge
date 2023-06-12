@@ -7,6 +7,9 @@ void setZeros(vector<vector<int>> &matrix)
 	int m = matrix[0].size();
 	vector<vector<int>> mat(n, vector<int>(m, -1));
 	
+	unordered_map<int, int> rows;
+	unordered_map<int, int> cols;
+
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			if (matrix[i][j] == 0) mat[i][j] = 0;
@@ -16,23 +19,15 @@ void setZeros(vector<vector<int>> &matrix)
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
 			if (matrix[i][j] == 0) {
-				for (int k = 0; k < m; k++) {
-					if (mat[i][k] != 0) {
-						mat[i][k] = 1;
-					}
-				}
-				for (int k = 0; k < n; k++) {
-					if (mat[k][j] != 0) {
-						mat[k][j] = 1;
-					}
-				}
+				rows[i]++;
+				cols[j]++;
 			}
 		}
 	}
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < m; j++) {
-			if (mat[i][j] != -1) {
+			if (rows[i] || cols[j]) {
 				matrix[i][j] = 0;
 			}
 		}
