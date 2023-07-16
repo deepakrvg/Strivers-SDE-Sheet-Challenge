@@ -16,6 +16,7 @@ public:
         }
         ListNode* dummy = new ListNode(0);
         dummy->next = head;
+        // initializing to dummy is important
         ListNode* curr = dummy;
         ListNode* prev = dummy;
         ListNode* nxt = dummy;
