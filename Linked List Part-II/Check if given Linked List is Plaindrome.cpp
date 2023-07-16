@@ -31,14 +31,7 @@ public:
         }
         slow->next = prev;
 
-        fast = head;
-        while (fast != NULL) {
-            cout << fast->val << " ";
-            fast = fast->next;
-        }
-
         slow = slow->next;
-        // cout << slow->val;
         while (slow != NULL) {
             if (head->val != slow->val) {
                 return false;
